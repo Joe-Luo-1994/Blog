@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Kotlin," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="因今日所學內容較雜，先以兩部分紀錄所學，剩下的挪到明天：一、 Kotlin Basics: 包含 for loop, while loop, function, nullables二、 Object Oriented in Kotlin 一、 Kotlin Basics特別紀錄與其他所學語言的差異之處 For Loops語法上與其他地方略有不同，有三種較常見的模式 123456789101112f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day 2 | Flora Alarm Journey">
+<meta property="og:url" content="http://yoursite.com/2020/06/14/20200614%20|%20Flora%20Alarm%20Journey%20Day%202.md/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="因今日所學內容較雜，先以兩部分紀錄所學，剩下的挪到明天：一、 Kotlin Basics: 包含 for loop, while loop, function, nullables二、 Object Oriented in Kotlin 一、 Kotlin Basics特別紀錄與其他所學語言的差異之處 For Loops語法上與其他地方略有不同，有三種較常見的模式 123456789101112f">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2020-06-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-06-15T15:38:49.925Z">
+<meta property="article:author" content="Joe Luo">
+<meta property="article:tag" content="Kotlin">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/06/14/20200614 | Flora Alarm Journey Day 2.md/"/>
+
+
+
+
+
+  <title>Day 2 | Flora Alarm Journey | Hexo</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/14/20200614%20%7C%20Flora%20Alarm%20Journey%20Day%202.md/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joe Luo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Day 2 | Flora Alarm Journey</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2020-06-14T00:00:00+08:00">
+                2020-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>因今日所學內容較雜，先以兩部分紀錄所學，剩下的挪到明天：<br>一、 Kotlin Basics: 包含 <em>for loop</em>, <em>while loop</em>, <em>function</em>, <em>nullables</em><br>二、 Object Oriented in Kotlin</p>
+<h2 id="一、-Kotlin-Basics"><a href="#一、-Kotlin-Basics" class="headerlink" title="一、 Kotlin Basics"></a>一、 Kotlin Basics</h2><p>特別紀錄與其他所學語言的差異之處</p>
+<h3 id="For-Loops"><a href="#For-Loops" class="headerlink" title="For Loops"></a>For Loops</h3><p>語法上與其他地方略有不同，有三種較常見的模式</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(num <span class="keyword">in</span> <span class="number">1</span>..<span class="number">10</span>) &#123;</span><br><span class="line">    print(<span class="string">"<span class="variable">$num</span>"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 10 will not be printed</span></span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">1</span> until <span class="number">10</span>) &#123;</span><br><span class="line">    print(<span class="string">"<span class="variable">$i</span> "</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">10</span> downTo <span class="number">1</span> step <span class="number">2</span>) &#123; <span class="comment">// Same as for (i in 10.donwTo(1).step(2))</span></span><br><span class="line">    print(<span class="string">"<span class="variable">$i</span> "</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h3><p>Parameter 與 return type 需特別指定</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Simple Function</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">myFunction</span><span class="params">()</span></span> &#123;</span><br><span class="line">    println(<span class="string">"myFunction is called"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Parameter (define input)</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">addUp</span><span class="params">(a: <span class="type">Int</span>, b: <span class="type">Int</span>)</span></span> : <span class="built_in">Int</span> &#123;</span><br><span class="line">    <span class="comment">// output</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Nullable"><a href="#Nullable" class="headerlink" title="Nullable"></a>Nullable</h3><p>以前較不熟悉的部分，針對 NullPointerException 的相關處理</p>
+<table>
+<thead>
+<tr>
+<th>expression</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>let</code></td>
+<td><em>Safe Calls</em>: Perform certain operation only for non-null values</td>
+</tr>
+<tr>
+<td><code>?:</code></td>
+<td><em>Elvis Operator</em>: Set default value</td>
+</tr>
+<tr>
+<td><code>?.</code></td>
+<td><em>Safe Calls</em>: Only call property if not null</td>
+</tr>
+<tr>
+<td><code>!!</code></td>
+<td><em>Not-Null Assertion Operator</em>: Conver any value to a non-null type and throws an exception if the value is null</td>
+</tr>
+</tbody></table>
+<h2 id="二、-Object-Oriented-in-Kotlin"><a href="#二、-Object-Oriented-in-Kotlin" class="headerlink" title="二、 Object Oriented in Kotlin"></a>二、 Object Oriented in Kotlin</h2><p>此部分目前僅透過較抽象的例子學習，先簡短紀錄。</p>
+<h3 id="Member-Variables-Functions-and-Constructors"><a href="#Member-Variables-Functions-and-Constructors" class="headerlink" title="Member Variables - Functions and Constructors"></a>Member Variables - Functions and Constructors</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> joe = Person(<span class="string">"Joe"</span>, <span class="string">"Luo"</span>, <span class="number">31</span>)</span><br><span class="line">    joe.hobby = <span class="string">"Dance"</span></span><br><span class="line">    println(<span class="string">"Joe is <span class="subst">$&#123;joe.age&#125;</span> years old"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">constructor</span></span>(firstName: String = <span class="string">"John"</span>, lastName: String = <span class="string">"Dove"</span>) &#123;</span><br><span class="line">    <span class="comment">// Member Variables - Properties</span></span><br><span class="line">    <span class="keyword">var</span> age: <span class="built_in">Int</span>? = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">var</span> hobby: String = <span class="string">"Watching Netflix"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        println(<span class="string">"A persons is created"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Member secondary constructor</span></span><br><span class="line">    <span class="keyword">constructor</span>(firstName: String, lastName: String, age: <span class="built_in">Int</span>) : <span class="keyword">this</span>(firstName, lastName) &#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age</span><br><span class="line">        println(<span class="string">"Set the age of the person"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Member functions - Methods</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">stateHobby</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">"My hobby is <span class="variable">$hobby</span>"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中 Secondary Constructor 與 <code>this</code>的應用可進一步研究<br>ref: <a href="https://kotlinlang.org/docs/reference/classes.html" target="_blank" rel="noopener">Classes and Inheritance - Kotlin Programming Language</a></p>
+<h3 id="Lateinit-Plus-Setters-And-Getters"><a href="#Lateinit-Plus-Setters-And-Getters" class="headerlink" title="Lateinit Plus Setters And Getters"></a>Lateinit Plus Setters And Getters</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> myCar = Car()</span><br><span class="line">    <span class="comment">// 呼叫get</span></span><br><span class="line">    println(<span class="string">"Brand is : <span class="subst">$&#123;myCar.myBrand&#125;</span>"</span>)</span><br><span class="line">    <span class="comment">// 呼叫set</span></span><br><span class="line">    myCar.maxSpeed = -<span class="number">5</span></span><br><span class="line">    println(<span class="string">"Maxspeed is <span class="subst">$&#123;myCar.maxSpeed&#125;</span>"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span></span>() &#123;</span><br><span class="line">    <span class="comment">// 先宣告有此變數，之後再指定值，而不用先指定null</span></span><br><span class="line">    <span class="keyword">lateinit</span> <span class="keyword">var</span> owner: String</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 每個member property皆有default get/set methods，要取得/更改時皆需呼叫此methods，因此用field作為暫時變數，以免進入recursive call(如get呼叫get)</span></span><br><span class="line">    <span class="keyword">val</span> myBrand: String = <span class="string">"BMW"</span></span><br><span class="line">        <span class="comment">//此時即便沒縮排，仍會判定為針對myBrand的getter</span></span><br><span class="line">        <span class="keyword">get</span>() &#123;</span><br><span class="line">            <span class="keyword">return</span> field.toLowerCase()</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// default setter</span></span><br><span class="line">        <span class="keyword">set</span>(value)&#123;</span><br><span class="line">            field = value</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> maxSpeed: <span class="built_in">Int</span> = <span class="number">250</span></span><br><span class="line">        <span class="comment">// default getter</span></span><br><span class="line">        <span class="keyword">get</span>() = field</span><br><span class="line">        <span class="keyword">set</span>(value) &#123;</span><br><span class="line">            field =</span><br><span class="line">                <span class="keyword">if</span> (value &gt; <span class="number">0</span>) value <span class="keyword">else</span> <span class="keyword">throw</span> IllegalArgumentException(<span class="string">"Maxspeed cannot be less than 0"</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> myModel : String = <span class="string">"M5"</span></span><br><span class="line">        <span class="comment">//透過如此設置，class外即無法呼叫set</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">set</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.owner = <span class="string">"Frank"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以下文章除了介紹 backing field 外，還有介紹其他初學時容易遇到的問題，是很好的參考<br>ref: <a href="https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/590092/" target="_blank" rel="noopener">初學 Kotlin 時遇到的難題 | 程式前沿</a></p>
+<p>以下文章說明 lateinit 的使用時機，但目前知識尚不足無法看懂，之後有機會再補<br>ref: <a href="https://medium.com/@kazafchen/kotlin%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97-%E5%8D%81%E4%B8%80-lateinit-vs-lazy-1ef96bc5b3b3" target="_blank" rel="noopener">Kotlin 使用心得（十一）：lateinit vs lazy - Carter Chen - Medium</a></p>
+<h3 id="Data-Classes"><a href="#Data-Classes" class="headerlink" title="Data Classes"></a>Data Classes</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// data class require at least 1 parameter</span></span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>(<span class="keyword">val</span> id: <span class="built_in">Long</span>, <span class="keyword">var</span> name: String)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> user1 = User(<span class="number">1</span>, <span class="string">"Denis"</span>)</span><br><span class="line">    user1.name = <span class="string">"Michael"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> user2 = User(<span class="number">1</span>,<span class="string">"Michael"</span>)</span><br><span class="line">    println(user1.equals(user2))</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Will list all the members</span></span><br><span class="line">    println(<span class="string">"User Details: <span class="variable">$user1</span>"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// copy, component</span></span><br><span class="line">    <span class="keyword">val</span> updatedUser = user1.copy(name=<span class="string">"Joe Luo"</span>)</span><br><span class="line">    println(updatedUser)</span><br><span class="line">    println(updatedUser.component1())</span><br><span class="line">    println(updatedUser.component2())</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Destructuring</span></span><br><span class="line">    <span class="keyword">val</span> (id,name) = updatedUser</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下文有介紹 data class 與一般 class 的差異，主要有以下 4 點</p>
+<ol>
+<li>data class 覆寫了<code>toString()</code></li>
+<li>data class 新增了<code>componentN()</code>方法</li>
+<li>data class 新增了<code>copy()</code>方法</li>
+<li>data class 覆寫了<code>hashCode()</code>方法：探討<code>equal</code>的判斷方式</li>
+</ol>
+<p>ref: <a href="https://medium.com/@kazafchen/kotlin%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97-%E5%85%AD-data-class-1689b1782abb" target="_blank" rel="noopener">Kotlin 使用心得（六）：data class - Carter Chen - Medium</a></p>
+<h3 id="Inheritance-Interfaces-Abstract-Classes"><a href="#Inheritance-Interfaces-Abstract-Classes" class="headerlink" title="Inheritance, Interfaces, Abstract Classes"></a>Inheritance, Interfaces, Abstract Classes</h3><p>下列程式碼紀錄 Inheritance 的基本使用(搭配<code>open</code>與<code>override</code>)</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> audiA3 = Car(<span class="string">"A3"</span>, <span class="string">"Audi"</span>)</span><br><span class="line">    <span class="keyword">var</span> teslaS = ElectricCar(<span class="string">"S-Model"</span>, <span class="string">"Tesla"</span>, <span class="number">85.0</span>)</span><br><span class="line"></span><br><span class="line">    teslaS.extendRange(<span class="number">300.0</span>)</span><br><span class="line">    teslaS.drive()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Polymorphism</span></span><br><span class="line">    audiA3.drive(<span class="number">200.0</span>)</span><br><span class="line">    teslaS.drive(<span class="number">200.0</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// "open" to let other class inherit, default is "final"</span></span><br><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span></span>(<span class="keyword">val</span> name: String, <span class="keyword">val</span> brand: String) &#123;</span><br><span class="line">    <span class="comment">// "open" to let inheriting class override</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> range: <span class="built_in">Double</span> = <span class="number">0.0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">extendRange</span><span class="params">(amount: <span class="type">Double</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (amount &gt; <span class="number">0</span>)</span><br><span class="line">            range += amount</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">open</span> <span class="function"><span class="keyword">fun</span> <span class="title">drive</span><span class="params">(distance: <span class="type">Double</span>)</span></span> &#123;</span><br><span class="line">        println(<span class="string">"Drove for <span class="variable">$distance</span> KM"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Subclass of Car</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ElectricCar</span></span>(name: String, brand: String, batteryLife: <span class="built_in">Double</span>) : Car(name, brand) &#123;</span><br><span class="line">    <span class="comment">// Override the property of Super Class, "open" must be declared in Super Class</span></span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">var</span> range = batteryLife * <span class="number">6</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">drive</span><span class="params">(distance: <span class="type">Double</span>)</span></span> &#123;</span><br><span class="line">        println(<span class="string">"Drove for <span class="variable">$distance</span> KM on electricity"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">drive</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">"Drove for <span class="variable">$range</span> KM on electricity"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而關於 Interfaces 與 Abstract Classes，需了解兩者間使用的差異</p>
+<p>差異在於 Abstract class 可以保留 state，而反之 Interfaces 則否（無法在宣告時初始化 property）<br>Abstract class 幾乎可以做到所有 Interfaces 可做的事。在這之上，還可指定哪些可被 override，或指定哪些需被 subclass implement</p>
+<p>ref: <a href="https://medium.com/@kazafchen/kotlin%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97-%E5%85%AB-%E7%84%A1%E5%BD%A2%E5%8B%9D%E6%9C%89%E5%BD%A2-%E6%8A%BD%E8%B1%A1%E9%A1%9E%E5%88%A5-%E6%96%B9%E6%B3%95%E8%88%87%E4%BB%8B%E9%9D%A2-900830783ac0" target="_blank" rel="noopener">Kotlin 使用心得（八）：無形勝有形 — 抽象類別、方法與介面 - Carter Chen - Medium</a></p>
+<h3 id="Typecasting"><a href="#Typecasting" class="headerlink" title="Typecasting"></a>Typecasting</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// List&lt;Type&gt;</span></span><br><span class="line">    <span class="keyword">val</span> stringList: List&lt;String&gt; = listOf(<span class="string">"Denis"</span>, <span class="string">"Joe"</span>)</span><br><span class="line">    <span class="keyword">val</span> mixedTypeList: List&lt;Any&gt; = listOf(<span class="string">"Joe"</span>, <span class="number">31</span>, <span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// for loop with List</span></span><br><span class="line">    <span class="keyword">for</span> (value <span class="keyword">in</span> mixedTypeList) &#123;</span><br><span class="line">        <span class="keyword">when</span> (value) &#123;</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Int</span> -&gt; &#123;</span><br><span class="line">                println(<span class="string">"Integer: '<span class="variable">$value</span>'"</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Double</span> -&gt; &#123;</span><br><span class="line">                print(<span class="string">"Double: '<span class="variable">$value</span>' with Floor value <span class="subst">$&#123;floor(value)&#125;</span>"</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> -&gt; &#123;</span><br><span class="line">                println(<span class="string">"Unknown Type"</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// SMART CAST - condition check</span></span><br><span class="line">    <span class="keyword">val</span> obj1: Any = <span class="string">"I have a dream"</span></span><br><span class="line">    <span class="keyword">if</span>(obj1 !<span class="keyword">is</span> String) &#123;</span><br><span class="line">        println(<span class="string">"Not a String"</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        println(<span class="string">"Found a String of length <span class="subst">$&#123;obj1.length&#125;</span>"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Explicit (unsafe) cast - using "as" keyword, can go wrong</span></span><br><span class="line">    <span class="keyword">val</span> str1: String = obj1 <span class="keyword">as</span> String</span><br><span class="line">    println(str1.length)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Explicit (safe) cast- using "as?" keyword</span></span><br><span class="line">    <span class="keyword">val</span> obj3: Any = <span class="number">1377</span></span><br><span class="line">    <span class="keyword">val</span> str3: String? = obj3 <span class="keyword">as</span>? String</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>明日目標： 完成課程 Sec 6~8</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/13/20200613%20%7C%20Flora%20Alarm%20%E9%96%8B%E7%99%BC%E8%88%87%E5%AD%B8%E7%BF%92%E6%97%A5%E8%AA%8C%20Day%201/" rel="next" title="Day 1 | Flora Alarm Journey">
+                <i class="fa fa-chevron-left"></i> Day 1 | Flora Alarm Journey
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/06/15/20200615%20%7C%20Flora%20Alarm%20Journey%20Day%203/" rel="prev" title="Day 3 | Flora Alarm Journey">
+                Day 3 | Flora Alarm Journey <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Joe Luo</p>
+              <p class="site-description motion-element" itemprop="description">紀錄男孩逐漸成熟的過程</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">標籤</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、-Kotlin-Basics"><span class="nav-number">1.</span> <span class="nav-text">一、 Kotlin Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#For-Loops"><span class="nav-number">1.1.</span> <span class="nav-text">For Loops</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function"><span class="nav-number">1.2.</span> <span class="nav-text">Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nullable"><span class="nav-number">1.3.</span> <span class="nav-text">Nullable</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、-Object-Oriented-in-Kotlin"><span class="nav-number">2.</span> <span class="nav-text">二、 Object Oriented in Kotlin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Member-Variables-Functions-and-Constructors"><span class="nav-number">2.1.</span> <span class="nav-text">Member Variables - Functions and Constructors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lateinit-Plus-Setters-And-Getters"><span class="nav-number">2.2.</span> <span class="nav-text">Lateinit Plus Setters And Getters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Classes"><span class="nav-number">2.3.</span> <span class="nav-text">Data Classes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inheritance-Interfaces-Abstract-Classes"><span class="nav-number">2.4.</span> <span class="nav-text">Inheritance, Interfaces, Abstract Classes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Typecasting"><span class="nav-number">2.5.</span> <span class="nav-text">Typecasting</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joe Luo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

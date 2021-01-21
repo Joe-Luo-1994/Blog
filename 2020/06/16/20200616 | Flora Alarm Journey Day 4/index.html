@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Kotlin, 產品思維," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="今日透過 QuizApp 學習許多 UI component 及其參數設置，也學習一些在 activity.kt 中設置 listener、修改 UI 參數的方式。 關於 UI Component 部分因用過即知道，暫不花篇幅額外介紹，僅用關鍵字做個備忘。 而除了 Kotlin 部分，今天也試著解決問題：「要做出什麼樣的產品」，會影響到報告、學習、甚至畢業與就業的問題。也會紀錄過程中的收穫。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day 4 | Flora Alarm Journey">
+<meta property="og:url" content="http://yoursite.com/2020/06/16/20200616%20|%20Flora%20Alarm%20Journey%20Day%204/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="今日透過 QuizApp 學習許多 UI component 及其參數設置，也學習一些在 activity.kt 中設置 listener、修改 UI 參數的方式。 關於 UI Component 部分因用過即知道，暫不花篇幅額外介紹，僅用關鍵字做個備忘。 而除了 Kotlin 部分，今天也試著解決問題：「要做出什麼樣的產品」，會影響到報告、學習、甚至畢業與就業的問題。也會紀錄過程中的收穫。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://yoursite.com/2020/06/16/20200616%20%7C%20Flora%20Alarm%20Journey%20Day%204/title.jpeg">
+<meta property="article:published_time" content="2020-06-15T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-06-16T17:28:26.223Z">
+<meta property="article:author" content="Joe Luo">
+<meta property="article:tag" content="Kotlin, 產品思維">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/16/20200616%20%7C%20Flora%20Alarm%20Journey%20Day%204/title.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/06/16/20200616 | Flora Alarm Journey Day 4/"/>
+
+
+
+
+
+  <title>Day 4 | Flora Alarm Journey | Hexo</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/16/20200616%20%7C%20Flora%20Alarm%20Journey%20Day%204/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joe Luo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Day 4 | Flora Alarm Journey</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2020-06-16T00:00:00+08:00">
+                2020-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <img src="title.jpeg" alt="title">
+
+<p>今日透過 QuizApp 學習許多 UI component 及其參數設置，也學習一些在 activity.kt 中設置 listener、修改 UI 參數的方式。</p>
+<p>關於 UI Component 部分因用過即知道，暫不花篇幅額外介紹，僅用關鍵字做個備忘。</p>
+<p>而除了 Kotlin 部分，今天也試著解決問題：「要做出什麼樣的產品」，會影響到報告、學習、甚至畢業與就業的問題。也會紀錄過程中的收穫。</p>
+<p>關鍵字：<strong><em>Intent</em></strong>, <strong>library implementation</strong>, <strong><em>material design</em></strong>, <strong><em>Cardview</em></strong>, <strong><em>marginStart</em></strong>, <strong>全螢幕效果</strong>, <strong><em>object</em></strong>, <strong><em>ScrollView</em></strong>, <strong><em>ImageView</em></strong>, <strong><em>ProgressBar</em></strong>, <strong><em>shape</em></strong>, <strong><em>tools:text</em></strong>, <strong><em>drawable resources</em></strong>, <strong><em>context</em></strong></p>
+<a id="more"></a>
+
+<h1 id="Kotlin-部分"><a href="#Kotlin-部分" class="headerlink" title="Kotlin 部分"></a>Kotlin 部分</h1><p>以下紀錄查找資料過程中覺得重要的收穫</p>
+<h2 id="1-class-in-Kotlin"><a href="#1-class-in-Kotlin" class="headerlink" title="1. class in Kotlin"></a>1. <code>class</code> in Kotlin</h2><p>因<strong>大幅減少了創建 class 的程式碼</strong>，除了宣告 class 時省力外，還可用於 function 需 return 超過一個值時的場合，不必再像從前要先回傳 List 再解開。</p>
+<p>在下面的演講中，Kotlin Designer 親自說明 Kotlin 與傳統 Java 寫起來應注意的邏輯差異，值得多體會比較，之後打算特地寫一篇紀錄。</p>
+<p>ref: <a href="https://www.youtube.com/watch?v=6P20npkvcb8" target="_blank" rel="noopener">How to Kotlin - from the Lead Kotlin Language Designer (Google I/O ‘18)</a></p>
+<h2 id="2-引入-library-遇到問題時的-sop"><a href="#2-引入-library-遇到問題時的-sop" class="headerlink" title="2. 引入 library 遇到問題時的 sop:"></a>2. 引入 library 遇到問題時的 sop:</h2><p>導入 material design 時研究了一下，針對未來不論版本更新或導入新的 library，都可參照以下方法：</p>
+<ol>
+<li>Go to Artifact Mappings and serach for desired library</li>
+<li>Go to AndroidX Releases page and check for the current version number</li>
+<li>Add the library in <em>build.gradoe[module.app]</em> and press <code>Sync Now</code></li>
+</ol>
+<p>ref: <a href="https://stackoverflow.com/questions/53089633/how-to-add-cardview-in-layout-xml-in-androidx" target="_blank" rel="noopener">android - How to add cardview in layout xml in AndroidX - Stack Overflow</a></p>
+<h2 id="3-drawable-resources的-ID"><a href="#3-drawable-resources的-ID" class="headerlink" title="3. drawable resources的 ID"></a>3. <em>drawable resources</em>的 ID</h2><p>若以 bitmap 方式引入圖片，放在 drawable folder 內的檔案會自動根據檔名生成對應的 property (e.g. R.drawable.bg)，即便看起來像 String 格式，但其實已被轉化為對應 ID 的 Int。</p>
+<p>除了目前用過的 Bitmap 之外，似乎還有各種資源的對應方式，遇到時可以看 doc 進一步了解。</p>
+<hr>
+<h1 id="產品思維部分"><a href="#產品思維部分" class="headerlink" title="產品思維部分"></a>產品思維部分</h1><p>有找到兩個平日可以吸收資訊的網站：</p>
+<ol>
+<li>人人都是產品經理（中國）</li>
+<li>3PM(台灣)</li>
+</ol>
+<p>專注技術面時，常會忘了要以需求為導向去做產品，因此透過別人有框架的分析，來完善自己看事物的能力。而如何有效地發現並進一步實現需求則有賴平時的體驗、分析、改良。至於該如何做到？以下整理自己整理的心得</p>
+<h2 id="1-專業分析所需的知識水準要到位"><a href="#1-專業分析所需的知識水準要到位" class="headerlink" title="1. 專業分析所需的知識水準要到位"></a>1. 專業分析所需的知識水準要到位</h2><p>過往像 Extra Credits 試著用娛樂資訊(infotainment)的方式去探討這類需求，但會遇到的最直接瓶頸就是脫離現實，即便是心理層面的探討也都屬於較主觀的觀察。因此包含心理學、統計學、業界的產品分析水準都要精進，才能用更嚴謹的語言去與別人交流產品現況</p>
+<h2 id="2-取得資料與分析資料，再講故事"><a href="#2-取得資料與分析資料，再講故事" class="headerlink" title="2. 取得資料與分析資料，再講故事"></a>2. 取得資料與分析資料，再講故事</h2><p>現實的資料最有說服力，如何透過分析資料讓迭代過程有意義，本身就是可以學習甚至研究的領域。對於資料操作（資料庫）、資料分析（深度學習）的技術面也不可放。</p>
+<p>而在那之上如何透過報告或其他機會與人交流，說故事的能力就很重要，因此先從難得的報告機會做起，在那之上看如何擴大影響力。</p>
+<h2 id="3-迭代的技術開發能力學習-避開雜訊"><a href="#3-迭代的技術開發能力學習-避開雜訊" class="headerlink" title="3. 迭代的技術開發能力學習 - 避開雜訊"></a>3. 迭代的技術開發能力學習 - 避開雜訊</h2><p>Android 是個變動很快的領域，如何更貼近上層開發者的討論框架是我現在的第一要務，避開中間過時或理解錯誤的觀點。</p>
+<p>Android 開發論壇應是很棒的材料來源，每天多學多看。而 Udemy 有其他框架思維類的課程，把握時間學習。</p>
+<hr>
+<h2 id="心得雜談"><a href="#心得雜談" class="headerlink" title="心得雜談"></a>心得雜談</h2><p>今日跟課程不太順利，老師在操作許多 function 時只草草帶過，對於其使用參數的意義沒多做解釋。在對整體架構不清楚的狀況下，看 doc 很辛苦。因此在最短的時間內修完這門課之餘，找時間看架構類的課程來補足觀念</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Kotlin-%E7%94%A2%E5%93%81%E6%80%9D%E7%B6%AD/" rel="tag"># Kotlin, 產品思維</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/15/20200615%20%7C%20Flora%20Alarm%20Journey%20Day%203/" rel="next" title="Day 3 | Flora Alarm Journey">
+                <i class="fa fa-chevron-left"></i> Day 3 | Flora Alarm Journey
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/06/18/20200618%20%7C%20Flora%20Alarm%20Journey%20Day%206/" rel="prev" title="Day 6 | Flora Alarm Journey">
+                Day 6 | Flora Alarm Journey <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Joe Luo</p>
+              <p class="site-description motion-element" itemprop="description">紀錄男孩逐漸成熟的過程</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">標籤</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kotlin-部分"><span class="nav-number">1.</span> <span class="nav-text">Kotlin 部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-class-in-Kotlin"><span class="nav-number">1.1.</span> <span class="nav-text">1. class in Kotlin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-引入-library-遇到問題時的-sop"><span class="nav-number">1.2.</span> <span class="nav-text">2. 引入 library 遇到問題時的 sop:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-drawable-resources的-ID"><span class="nav-number">1.3.</span> <span class="nav-text">3. drawable resources的 ID</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#產品思維部分"><span class="nav-number">2.</span> <span class="nav-text">產品思維部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-專業分析所需的知識水準要到位"><span class="nav-number">2.1.</span> <span class="nav-text">1. 專業分析所需的知識水準要到位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-取得資料與分析資料，再講故事"><span class="nav-number">2.2.</span> <span class="nav-text">2. 取得資料與分析資料，再講故事</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-迭代的技術開發能力學習-避開雜訊"><span class="nav-number">2.3.</span> <span class="nav-text">3. 迭代的技術開發能力學習 - 避開雜訊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#心得雜談"><span class="nav-number">2.4.</span> <span class="nav-text">心得雜談</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joe Luo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
